@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Globe, UserPlus, Settings } from "lucide-react";
+import { UserPlus, Settings } from "lucide-react";
+import schoolLogo from "@assets/images (4)_1750956436020.jpeg";
 
 interface NavigationProps {
   currentView: "registration" | "admin";
@@ -13,7 +14,11 @@ export default function Navigation({ currentView, onViewChange }: NavigationProp
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-4">
             <div className="flex-shrink-0">
-              <Globe className="h-8 w-8 text-primary" />
+              <img 
+                src={schoolLogo} 
+                alt="Prodigy Public School Logo" 
+                className="h-8 w-8 object-contain rounded"
+              />
             </div>
             <div>
               <h1 className="text-xl font-semibold text-gray-900">Prodigy Public School - MUN 2025</h1>
