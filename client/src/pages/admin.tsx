@@ -232,6 +232,10 @@ export default function AdminPage() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Committees</SelectItem>
+                  <SelectItem value="AIPPM">AIPPM</SelectItem>
+                  <SelectItem value="LSabha">Lok Sabha</SelectItem>
+                  <SelectItem value="RSabha">Rajya Sabha</SelectItem>
+                  <SelectItem value="NITI">NITI Aayog</SelectItem>
                   <SelectItem value="UNSC">UNSC</SelectItem>
                   <SelectItem value="UNGA">UNGA</SelectItem>
                   <SelectItem value="ECOSOC">ECOSOC</SelectItem>
@@ -240,10 +244,6 @@ export default function AdminPage() {
                   <SelectItem value="UNESCO">UNESCO</SelectItem>
                   <SelectItem value="UNHRC">UNHRC</SelectItem>
                   <SelectItem value="DISEC">DISEC</SelectItem>
-                  <SelectItem value="AIPPM">AIPPM</SelectItem>
-                  <SelectItem value="LSabha">Lok Sabha</SelectItem>
-                  <SelectItem value="RSabha">Rajya Sabha</SelectItem>
-                  <SelectItem value="NITI">NITI Aayog</SelectItem>
                 </SelectContent>
               </Select>
 

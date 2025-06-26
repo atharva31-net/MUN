@@ -70,13 +70,13 @@ export default function RegistrationPage() {
       <div className="text-center mb-12">
         <div className="mb-6">
           <img 
-            src="/attached_assets/images (4)_1750955841383.jpeg" 
+            src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=300" 
             alt="Model United Nations Conference" 
             className="w-full h-48 object-cover rounded-xl shadow-lg"
           />
         </div>
         <div className="bg-primary/10 rounded-lg p-6 mb-4">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">School MUN 2025</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">MUN 2025</h2>
           <p className="text-lg font-medium text-primary">Prodigy Public School</p>
         </div>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -247,6 +247,10 @@ export default function RegistrationPage() {
                       <FormLabel>Committee Preferences *</FormLabel>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {[
+                          { id: "AIPPM", label: "All India Political Parties Meet (AIPPM)" },
+                          { id: "LSabha", label: "Lok Sabha (House of the People)" },
+                          { id: "RSabha", label: "Rajya Sabha (Council of States)" },
+                          { id: "NITI", label: "NITI Aayog (National Institution for Transforming India)" },
                           { id: "UNSC", label: "United Nations Security Council (UNSC)" },
                           { id: "UNGA", label: "United Nations General Assembly (UNGA)" },
                           { id: "ECOSOC", label: "Economic and Social Council (ECOSOC)" },
@@ -255,10 +259,6 @@ export default function RegistrationPage() {
                           { id: "UNESCO", label: "United Nations Educational, Scientific and Cultural Organization (UNESCO)" },
                           { id: "UNHRC", label: "United Nations Human Rights Council (UNHRC)" },
                           { id: "DISEC", label: "Disarmament and International Security Committee (DISEC)" },
-                          { id: "AIPPM", label: "All India Political Parties Meet (AIPPM)" },
-                          { id: "LSabha", label: "Lok Sabha (House of the People)" },
-                          { id: "RSabha", label: "Rajya Sabha (Council of States)" },
-                          { id: "NITI", label: "NITI Aayog (National Institution for Transforming India)" },
                         ].map((committee) => (
                           <FormField
                             key={committee.id}
