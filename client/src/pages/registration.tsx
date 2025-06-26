@@ -26,9 +26,9 @@ export default function RegistrationPage() {
       lastName: "",
       email: "",
       grade: "",
-      experience: "",
       position: "",
       committees: [],
+      suggestions: "",
       newsletter: false,
     },
   });
@@ -190,54 +190,29 @@ export default function RegistrationPage() {
                   </h4>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <FormField
-                    control={form.control}
-                    name="experience"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Experience Level *</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select experience level" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="beginner">Beginner (0-1 conferences)</SelectItem>
-                            <SelectItem value="intermediate">Intermediate (2-5 conferences)</SelectItem>
-                            <SelectItem value="advanced">Advanced (6+ conferences)</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="position"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Preferred Position *</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select position" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="delegate">Delegate</SelectItem>
-                            <SelectItem value="chair">Committee Chair</SelectItem>
-                            <SelectItem value="crisis">Crisis Staff</SelectItem>
-                            <SelectItem value="press">Press Corps</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
+                <FormField
+                  control={form.control}
+                  name="position"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Preferred Position *</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select position" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="delegate">Delegate</SelectItem>
+                          <SelectItem value="chair">Committee Chair</SelectItem>
+                          <SelectItem value="crisis">Crisis Staff</SelectItem>
+                          <SelectItem value="press">Press Corps</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
                 <FormField
                   control={form.control}
@@ -289,6 +264,35 @@ export default function RegistrationPage() {
               </div>
 
 
+
+              {/* Suggestions */}
+              <div className="space-y-6">
+                <div className="border-b border-gray-200 pb-4">
+                  <h4 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                    <Info className="h-5 w-5 text-primary mr-2" />
+                    Suggestions & Comments
+                  </h4>
+                </div>
+
+                <FormField
+                  control={form.control}
+                  name="suggestions"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Any suggestions or comments for the conference?</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          placeholder="Share your thoughts, suggestions, or any special requests..." 
+                          rows={4}
+                          className="resize-none"
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
 
               {/* Newsletter Subscription */}
               <div className="space-y-4 border-t border-gray-200 pt-6">

@@ -15,6 +15,7 @@ export const registrations = pgTable("registrations", {
   committees: text("committees").array().notNull(),
   dietary: text("dietary"),
   accommodation: text("accommodation"),
+  suggestions: text("suggestions"),
   terms: boolean("terms").notNull(),
   newsletter: boolean("newsletter").default(false),
   status: text("status").notNull().default("pending"),
@@ -30,14 +31,15 @@ export const insertRegistrationSchema = createInsertSchema(registrations).omit({
   phone: true,
   school: true,
   terms: true,
+  experience: true,
 }).extend({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Please enter a valid email address").optional().or(z.literal("")),
   grade: z.string().min(1, "Grade/Year is required"),
-  experience: z.string().min(1, "Experience level is required"),
   position: z.string().min(1, "Preferred position is required"),
   committees: z.array(z.string()).min(1, "Please select at least one committee"),
+  suggestions: z.string().optional(),
   newsletter: z.boolean().optional(),
 });
 
