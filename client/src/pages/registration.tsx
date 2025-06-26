@@ -80,10 +80,13 @@ export default function RegistrationPage() {
             className="w-full h-48 object-cover rounded-xl shadow-lg"
           />
         </div>
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Join Our Model United Nations Conference</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">Join Prodigy Public School's First MUN Conference</h2>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Register now to participate in diplomatic discussions, develop critical thinking skills, and engage with global issues alongside fellow delegates.
+          Register now for our inaugural Model United Nations conference. This is a great opportunity for beginners to learn about diplomacy, global issues, and public speaking in a supportive environment.
         </p>
+        <div className="mt-4 text-center">
+          <p className="text-sm text-gray-500 font-medium">Organized by Prodigy Public School</p>
+        </div>
       </div>
 
       {/* Registration Form Card */}

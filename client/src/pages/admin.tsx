@@ -20,8 +20,8 @@ export default function AdminPage() {
   // Build query params
   const queryParams = new URLSearchParams();
   if (searchQuery) queryParams.append("search", searchQuery);
-  if (experienceFilter) queryParams.append("experience", experienceFilter);
-  if (committeeFilter) queryParams.append("committee", committeeFilter);
+  if (experienceFilter && experienceFilter !== "all") queryParams.append("experience", experienceFilter);
+  if (committeeFilter && committeeFilter !== "all") queryParams.append("committee", committeeFilter);
 
   const { data: registrations = [], isLoading } = useQuery<Registration[]>({
     queryKey: ["/api/registrations", queryParams.toString()],
@@ -219,7 +219,7 @@ export default function AdminPage() {
                   <SelectValue placeholder="All Experience Levels" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Experience Levels</SelectItem>
+                  <SelectItem value="all">All Experience Levels</SelectItem>
                   <SelectItem value="beginner">Beginner</SelectItem>
                   <SelectItem value="intermediate">Intermediate</SelectItem>
                   <SelectItem value="advanced">Advanced</SelectItem>
@@ -231,7 +231,7 @@ export default function AdminPage() {
                   <SelectValue placeholder="All Committees" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Committees</SelectItem>
+                  <SelectItem value="all">All Committees</SelectItem>
                   <SelectItem value="UNSC">UNSC</SelectItem>
                   <SelectItem value="UNGA">UNGA</SelectItem>
                   <SelectItem value="ECOSOC">ECOSOC</SelectItem>
