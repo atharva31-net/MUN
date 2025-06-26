@@ -78,12 +78,12 @@ export default function RegistrationPage() {
             className="w-full h-48 object-cover rounded-xl shadow-lg"
           />
         </div>
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Join Prodigy Public School's First MUN Conference</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">Join School MUN 2025 - Prodigy Public School</h2>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Register now for our inaugural Model United Nations conference. This is a great opportunity for beginners to learn about diplomacy, global issues, and public speaking in a supportive environment.
+          Register now for our inaugural School Model United Nations conference. This is a great opportunity for beginners to learn about diplomacy, global issues, and public speaking in a supportive environment.
         </p>
         <div className="mt-4 text-center">
-          <p className="text-sm text-gray-500 font-medium">Organized by Prodigy Public School</p>
+          <p className="text-sm text-gray-500 font-medium">First School MUN Conference - Organized by Prodigy Public School</p>
         </div>
       </div>
 
@@ -288,6 +288,10 @@ export default function RegistrationPage() {
                           { id: "UNESCO", label: "United Nations Educational, Scientific and Cultural Organization (UNESCO)" },
                           { id: "UNHRC", label: "United Nations Human Rights Council (UNHRC)" },
                           { id: "DISEC", label: "Disarmament and International Security Committee (DISEC)" },
+                          { id: "AIPPM", label: "All India Political Parties Meet (AIPPM)" },
+                          { id: "LSabha", label: "Lok Sabha (House of the People)" },
+                          { id: "RSabha", label: "Rajya Sabha (Council of States)" },
+                          { id: "NITI", label: "NITI Aayog (National Institution for Transforming India)" },
                         ].map((committee) => (
                           <FormField
                             key={committee.id}

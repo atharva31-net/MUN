@@ -16,7 +16,7 @@ export default function Navigation({ currentView, onViewChange }: NavigationProp
               <Globe className="h-8 w-8 text-primary" />
             </div>
             <div>
-              <h1 className="text-xl font-semibold text-gray-900">Prodigy Public School MUN</h1>
+              <h1 className="text-xl font-semibold text-gray-900">Prodigy Public School - School MUN 2025</h1>
               <p className="text-sm text-gray-500">First Model United Nations Conference</p>
             </div>
           </div>

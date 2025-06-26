@@ -50,8 +50,8 @@ export class MemStorage implements IStorage {
     const registration: Registration = {
       ...insertRegistration,
       phone: insertRegistration.phone || null,
-      dietary: insertRegistration.dietary || null,
-      accommodation: insertRegistration.accommodation || null,
+      dietary: null,
+      accommodation: null,
       newsletter: insertRegistration.newsletter || false,
       id,
       status: "pending",
