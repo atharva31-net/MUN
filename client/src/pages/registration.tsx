@@ -14,6 +14,7 @@ import { insertRegistrationSchema, type InsertRegistration } from "@shared/schem
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import SuccessModal from "@/components/success-modal";
+import mainPhoto from "@assets/download_1750956731522.jpeg";
 
 export default function RegistrationPage() {
   const [showSuccess, setShowSuccess] = useState(false);
@@ -70,7 +71,7 @@ export default function RegistrationPage() {
       <div className="text-center mb-12">
         <div className="mb-6">
           <img 
-            src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=300" 
+            src={mainPhoto} 
             alt="Model United Nations Conference" 
             className="w-full h-48 object-cover rounded-xl shadow-lg"
           />
