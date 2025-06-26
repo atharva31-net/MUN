@@ -49,9 +49,12 @@ export class MemStorage implements IStorage {
     const id = this.currentRegistrationId++;
     const registration: Registration = {
       ...insertRegistration,
-      phone: insertRegistration.phone || null,
+      email: insertRegistration.email || "",
+      phone: null,
+      school: "Prodigy Public School",
       dietary: null,
       accommodation: null,
+      terms: true,
       newsletter: insertRegistration.newsletter || false,
       id,
       status: "pending",

@@ -25,13 +25,10 @@ export default function RegistrationPage() {
       firstName: "",
       lastName: "",
       email: "",
-      phone: "",
-      school: "",
       grade: "",
       experience: "",
       position: "",
       committees: [],
-      terms: false,
       newsletter: false,
     },
   });
@@ -73,18 +70,18 @@ export default function RegistrationPage() {
       <div className="text-center mb-12">
         <div className="mb-6">
           <img 
-            src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=300" 
-            alt="Conference hall with delegates" 
+            src="/attached_assets/images (4)_1750955841383.jpeg" 
+            alt="Model United Nations Conference" 
             className="w-full h-48 object-cover rounded-xl shadow-lg"
           />
         </div>
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Join School MUN 2025 - Prodigy Public School</h2>
+        <div className="bg-primary/10 rounded-lg p-6 mb-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">School MUN 2025</h2>
+          <p className="text-lg font-medium text-primary">Prodigy Public School</p>
+        </div>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           Register now for our inaugural School Model United Nations conference. This is a great opportunity for beginners to learn about diplomacy, global issues, and public speaking in a supportive environment.
         </p>
-        <div className="mt-4 text-center">
-          <p className="text-sm text-gray-500 font-medium">First School MUN Conference - Organized by Prodigy Public School</p>
-        </div>
       </div>
 
       {/* Registration Form Card */}
@@ -147,39 +144,9 @@ export default function RegistrationPage() {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email Address *</FormLabel>
+                        <FormLabel>Email Address (Optional)</FormLabel>
                         <FormControl>
                           <Input type="email" placeholder="Enter your email" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Phone Number</FormLabel>
-                        <FormControl>
-                          <Input type="tel" placeholder="Enter your phone number" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <FormField
-                    control={form.control}
-                    name="school"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>School/Institution *</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Enter your school name" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -323,30 +290,8 @@ export default function RegistrationPage() {
 
 
 
-              {/* Terms and Conditions */}
+              {/* Newsletter Subscription */}
               <div className="space-y-4 border-t border-gray-200 pt-6">
-                <FormField
-                  control={form.control}
-                  name="terms"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                      <FormControl>
-                        <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                      </FormControl>
-                      <div className="space-y-1 leading-none">
-                        <FormLabel className="text-sm text-gray-700">
-                          I agree to the{" "}
-                          <a href="#" className="text-primary hover:underline">Terms and Conditions</a>{" "}
-                          and{" "}
-                          <a href="#" className="text-primary hover:underline">Privacy Policy</a>{" "}
-                          of the MUN Conference *
-                        </FormLabel>
-                        <FormMessage />
-                      </div>
-                    </FormItem>
-                  )}
-                />
-
                 <FormField
                   control={form.control}
                   name="newsletter"
