@@ -236,6 +236,10 @@ export default function AdminPage() {
                   <SelectItem value="UNGA">UNGA</SelectItem>
                   <SelectItem value="ECOSOC">ECOSOC</SelectItem>
                   <SelectItem value="WHO">WHO</SelectItem>
+                  <SelectItem value="UNICEF">UNICEF</SelectItem>
+                  <SelectItem value="UNESCO">UNESCO</SelectItem>
+                  <SelectItem value="UNHRC">UNHRC</SelectItem>
+                  <SelectItem value="DISEC">DISEC</SelectItem>
                 </SelectContent>
               </Select>
 

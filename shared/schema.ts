@@ -25,6 +25,8 @@ export const insertRegistrationSchema = createInsertSchema(registrations).omit({
   id: true,
   status: true,
   createdAt: true,
+  dietary: true,
+  accommodation: true,
 }).extend({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
@@ -35,8 +37,6 @@ export const insertRegistrationSchema = createInsertSchema(registrations).omit({
   experience: z.string().min(1, "Experience level is required"),
   position: z.string().min(1, "Preferred position is required"),
   committees: z.array(z.string()).min(1, "Please select at least one committee"),
-  dietary: z.string().optional(),
-  accommodation: z.string().optional(),
   terms: z.boolean().refine(val => val === true, "You must agree to the terms and conditions"),
   newsletter: z.boolean().optional(),
 });

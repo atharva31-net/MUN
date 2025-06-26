@@ -31,8 +31,6 @@ export default function RegistrationPage() {
       experience: "",
       position: "",
       committees: [],
-      dietary: "",
-      accommodation: "",
       terms: false,
       newsletter: false,
     },
@@ -282,10 +280,14 @@ export default function RegistrationPage() {
                       <FormLabel>Committee Preferences *</FormLabel>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {[
-                          { id: "UNSC", label: "UN Security Council (UNSC)" },
-                          { id: "UNGA", label: "UN General Assembly (UNGA)" },
+                          { id: "UNSC", label: "United Nations Security Council (UNSC)" },
+                          { id: "UNGA", label: "United Nations General Assembly (UNGA)" },
                           { id: "ECOSOC", label: "Economic and Social Council (ECOSOC)" },
                           { id: "WHO", label: "World Health Organization (WHO)" },
+                          { id: "UNICEF", label: "United Nations Children's Fund (UNICEF)" },
+                          { id: "UNESCO", label: "United Nations Educational, Scientific and Cultural Organization (UNESCO)" },
+                          { id: "UNHRC", label: "United Nations Human Rights Council (UNHRC)" },
+                          { id: "DISEC", label: "Disarmament and International Security Committee (DISEC)" },
                         ].map((committee) => (
                           <FormField
                             key={committee.id}
@@ -315,48 +317,7 @@ export default function RegistrationPage() {
                 />
               </div>
 
-              {/* Additional Information */}
-              <div className="space-y-6">
-                <div className="border-b border-gray-200 pb-4">
-                  <h4 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
-                    <Info className="h-5 w-5 text-primary mr-2" />
-                    Additional Information
-                  </h4>
-                </div>
 
-                <FormField
-                  control={form.control}
-                  name="dietary"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Dietary Restrictions</FormLabel>
-                      <FormControl>
-                        <Input placeholder="List any dietary restrictions or allergies" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="accommodation"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Special Accommodations</FormLabel>
-                      <FormControl>
-                        <Textarea 
-                          placeholder="Describe any special accommodations needed" 
-                          rows={3}
-                          className="resize-none"
-                          {...field} 
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
 
               {/* Terms and Conditions */}
               <div className="space-y-4 border-t border-gray-200 pt-6">
