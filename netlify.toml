@@ -1,1 +1,8 @@
--e '[build]\n  base = "client"\n  publish = "client/dist"\n  command = "npm run build"\n\n[build.environment]\n  NODE_VERSION = "18.18.0"'  
+[build]
+  base = "client"
+  publish = "client/dist"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18.18.0"
+  
