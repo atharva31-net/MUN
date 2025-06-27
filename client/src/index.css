@@ -1,8 +1,8 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Define global CSS variables (colors etc.) */
 :root {
   --background: hsl(0, 0%, 100%);
   --foreground: hsl(20, 14.3%, 4.1%);
@@ -51,12 +51,13 @@
 
 @layer base {
   * {
-    border-color: var(--border); /* avoids needing @apply border-[--border] */
+    border-color: var(--border);
   }
 
   body {
-    @apply font-sans antialiased;
     background-color: var(--background);
     color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
