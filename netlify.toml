@@ -4,4 +4,4 @@
   command = "npm run build"
 
 [build.environment]
-  NODE_VERSION = "18.17.1"
+  NODE_VERSION = "22.17.0"
