@@ -14,7 +14,7 @@ import { insertRegistrationSchema, type InsertRegistration } from "@shared/schem
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import SuccessModal from "@/components/success-modal";
-import mainPhoto from "@assets/download_1750956731522.jpeg";
+import mainPhoto from "@assets/logo.jpg";
 
 export default function RegistrationPage() {
   const [showSuccess, setShowSuccess] = useState(false);

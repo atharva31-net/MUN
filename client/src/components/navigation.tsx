@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { UserPlus, Settings } from "lucide-react";
-import schoolLogo from "@assets/images (4)_1750956436020.jpeg";
+import schoolLogo from "@assets/logox.jpeg";
 
 interface NavigationProps {
   currentView: "registration" | "admin";
