@@ -1,17 +1,15 @@
-import express, { Request, Response, NextFunction } from "express";
-import routes from "./routes";
+import express, { type Request, Response, NextFunction } from "express";
+import { registerRoutes } from "./routes";
+import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
-
-// Middleware: Parse JSON and form data
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Middleware: Custom API logging
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
-  let capturedJsonResponse: any = undefined;
+  let capturedJsonResponse: Record<string, any> | undefined = undefined;
 
   const originalResJson = res.json;
   res.json = function (bodyJson, ...args) {
@@ -26,27 +24,47 @@ app.use((req, res, next) => {
       if (capturedJsonResponse) {
         logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       }
-      if (logLine.length > 80) logLine = logLine.slice(0, 79) + "…";
-      console.log(logLine);
+
+      if (logLine.length > 80) {
+        logLine = logLine.slice(0, 79) + "…";
+      }
+
+      log(logLine);
     }
   });
 
   next();
 });
 
-// Route mounting
-app.use("/", routes);
+(async () => {
+  const server = await registerRoutes(app);
 
-// Error handler (safe logging)
-app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-  const status = err.status || err.statusCode || 500;
-  const message = err.message || "Internal Server Error";
-  console.error("❌ Unhandled Error:", err); // Safely log the error
-  res.status(status).json({ message });
-});
+  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+    const status = err.status || err.statusCode || 500;
+    const message = err.message || "Internal Server Error";
 
-// ✅ FIXED: Cast port to number
-const port = Number(process.env.PORT) || 5000;
-app.listen(port, "0.0.0.0", () => {
-  console.log(`✅ Server is running on http://localhost:${port}`);
-});
+    res.status(status).json({ message });
+    throw err;
+  });
+
+  // importantly only setup vite in development and after
+  // setting up all the other routes so the catch-all route
+  // doesn't interfere with the other routes
+  if (app.get("env") === "development") {
+    await setupVite(app, server);
+  } else {
+    serveStatic(app);
+  }
+
+  // ALWAYS serve the app on port 5000
+  // this serves both the API and the client.
+  // It is the only port that is not firewalled.
+  const port = 5000;
+  server.listen({
+    port,
+    host: "0.0.0.0",
+    reusePort: true,
+  }, () => {
+    log(`serving on port ${port}`);
+  });
+})();
