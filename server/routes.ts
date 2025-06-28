@@ -1,4 +1,3 @@
-// server/routes.ts
 import express, { Request, Response } from "express";
 import db from "./db";
 import { registrations } from "@shared/schema";
