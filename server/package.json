@@ -9,7 +9,6 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.6.0",
-    "drizzle-orm": "^0.44.2",
     "express": "^5.1.0",
     "postgres": "^3.4.7"
   },
