@@ -1,3 +1,4 @@
+// server/routes.ts
 import express, { Request, Response } from "express";
 import db from "./db";
 import { registrations } from "../shared/schema";
@@ -24,6 +25,5 @@ router.delete("/api/registrations/:id", async (_req: Request, res: Response) => 
   res.json({ message: "Delete endpoint not implemented." });
 });
 
+// ✅ FIX: Export router as default
 export default router;
-
-

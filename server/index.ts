@@ -2,9 +2,12 @@ import express, { Request, Response, NextFunction } from "express";
 import routes from "./routes";
 
 const app = express();
+
+// Middleware: Parse JSON and form data
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Middleware: Custom API logging
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
@@ -31,16 +34,19 @@ app.use((req, res, next) => {
   next();
 });
 
+// Route mounting
 app.use("/", routes);
 
+// Error handler (safe logging)
 app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   const status = err.status || err.statusCode || 500;
   const message = err.message || "Internal Server Error";
+  console.error("❌ Unhandled Error:", err); // Safely log the error
   res.status(status).json({ message });
-  throw err;
 });
 
-const port = 5000;
+// Start the server on specified port
+const port = process.env.PORT || 5000;
 app.listen(port, "0.0.0.0", () => {
   console.log(`✅ Server is running on http://localhost:${port}`);
 });
