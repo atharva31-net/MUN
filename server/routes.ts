@@ -1,7 +1,7 @@
 // server/routes.ts
 import express, { Request, Response } from "express";
 import db from "./db";
-import { registrations } from "../shared/schema";
+import { registrations } from "@shared/schema";
 import { eq } from "drizzle-orm";
 
 const router = express.Router();

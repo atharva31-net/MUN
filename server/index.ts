@@ -45,8 +45,8 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   res.status(status).json({ message });
 });
 
-// Start the server on specified port
-const port = process.env.PORT || 5000;
+// ✅ FIXED: Cast port to number
+const port = Number(process.env.PORT) || 5000;
 app.listen(port, "0.0.0.0", () => {
   console.log(`✅ Server is running on http://localhost:${port}`);
 });
