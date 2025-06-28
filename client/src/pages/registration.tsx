@@ -166,7 +166,7 @@ export default function RegistrationPage() {
                               <SelectValue placeholder="Select your grade" />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent>
+                          <SelectContent className="z-50">
                             <SelectItem value="9">Grade 9</SelectItem>
                             <SelectItem value="10">Grade 10</SelectItem>
                             <SelectItem value="11">Grade 11</SelectItem>
@@ -203,7 +203,7 @@ export default function RegistrationPage() {
                             <SelectValue placeholder="Select position" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent>
+                        <SelectContent className="z-50">
                           <SelectItem value="delegate">Delegate</SelectItem>
                           <SelectItem value="chair">Committee Chair</SelectItem>
                           <SelectItem value="crisis">Crisis Staff</SelectItem>
@@ -263,8 +263,6 @@ export default function RegistrationPage() {
                   )}
                 />
               </div>
-
-
 
               {/* Suggestions */}
               <div className="space-y-6">
