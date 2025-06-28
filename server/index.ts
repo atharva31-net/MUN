@@ -20,8 +20,8 @@ app.use((req, res, next) => {
   res.on("finish", () => {
     if (path.startsWith("/api")) {
       const duration = Date.now() - start;
-      let log = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) log += ` :: ${JSON.stringify(capturedJsonResponse)}`;
+      let log = ${req.method} ${path} ${res.statusCode} in ${duration}ms;
+      if (capturedJsonResponse) log +=  :: ${JSON.stringify(capturedJsonResponse)};
       console.log(log.length > 80 ? log.slice(0, 79) + "…" : log);
     }
   });
@@ -43,6 +43,6 @@ app.use((req, res, next) => {
 
   const port = Number(process.env.PORT) || 5000;
   app.listen(port, () => {
-    console.log(`Server listening on http://localhost:${port}`);
+    console.log(Server listening on http://localhost:${port});
   });
 })();
