@@ -16,16 +16,14 @@ app.use((req, res, next) => {
     capturedJsonResponse = body;
     return originalJson.apply(this, [body, ...args]);
   };
-
-  res.on("finish", () => {
-    if (path.startsWith("/api")) {
-      const duration = Date.now() - start;
-      let log = ${req.method} ${path} ${res.statusCode} in ${duration}ms;
-      if (capturedJsonResponse) log +=  :: ${JSON.stringify(capturedJsonResponse)};
-      console.log(log.length > 80 ? log.slice(0, 79) + "…" : log);
-    }
-  });
-
+res.on("finish", () => {
+  if (path.startsWith("/api")) {
+    const duration = Date.now() - start;
+    let log = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
+    if (capturedJsonResponse) log += ` :: ${JSON.stringify(capturedJsonResponse)}`;
+    console.log(log.length > 80 ? log.slice(0, 79) + "…" : log);
+  }
+});
   next();
 });
 
