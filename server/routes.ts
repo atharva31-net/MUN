@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertRegistrationSchema } from "../shared/schema";  // <-- fixed relative import
+import { insertRegistrationSchema } from "./shared/schema";  // <-- fixed relative import
 import { z } from "zod";
 
 

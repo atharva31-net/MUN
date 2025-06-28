@@ -5,7 +5,7 @@ import {
   type InsertUser,
   type Registration,
   type InsertRegistration
-} from "../shared/schema";
+} from "./shared/schema";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
