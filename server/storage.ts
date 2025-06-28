@@ -1,11 +1,17 @@
-import { users, registrations, type User, type InsertUser, type Registration, type InsertRegistration } from "@shared/schema";
+import {
+  users,
+  registrations,
+  type User,
+  type InsertUser,
+  type Registration,
+  type InsertRegistration
+} from "../shared/schema";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
-  
-  // Registration methods
+
   createRegistration(registration: InsertRegistration): Promise<Registration>;
   getRegistrations(): Promise<Registration[]>;
   getRegistration(id: number): Promise<Registration | undefined>;
@@ -16,54 +22,37 @@ export interface IStorage {
 }
 
 export class MemStorage implements IStorage {
-  private users: Map<number, User>;
-  private registrations: Map<number, Registration>;
-  private currentUserId: number;
-  private currentRegistrationId: number;
-
-  constructor() {
-    this.users = new Map();
-    this.registrations = new Map();
-    this.currentUserId = 1;
-    this.currentRegistrationId = 1;
-  }
+  private users = new Map<number, User>();
+  private registrations = new Map<number, Registration>();
+  private currentUserId = 1;
+  private currentRegistrationId = 1;
 
   async getUser(id: number): Promise<User | undefined> {
     return this.users.get(id);
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+    return Array.from(this.users.values()).find(u => u.username === username);
   }
 
-  async createUser(insertUser: InsertUser): Promise<User> {
+  async createUser(user: InsertUser): Promise<User> {
     const id = this.currentUserId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+    const newUser: User = { ...user, id };
+    this.users.set(id, newUser);
+    return newUser;
   }
 
-  async createRegistration(insertRegistration: InsertRegistration): Promise<Registration> {
+  async createRegistration(registration: InsertRegistration): Promise<Registration> {
     const id = this.currentRegistrationId++;
-    const registration: Registration = {
-      ...insertRegistration,
-      email: insertRegistration.email || "",
-      phone: null,
-      school: "Prodigy Public School",
-      experience: "beginner",
-      dietary: null,
-      accommodation: null,
-      suggestions: insertRegistration.suggestions || null,
-      terms: true,
-      newsletter: insertRegistration.newsletter || false,
+    // You can add defaults here if you want
+    const newRegistration: Registration = {
+      ...registration,
       id,
       status: "pending",
       createdAt: new Date(),
-    };
-    this.registrations.set(id, registration);
-    return registration;
+    } as Registration;
+    this.registrations.set(id, newRegistration);
+    return newRegistration;
   }
 
   async getRegistrations(): Promise<Registration[]> {
@@ -79,7 +68,6 @@ export class MemStorage implements IStorage {
   async updateRegistration(id: number, updates: Partial<Registration>): Promise<Registration | undefined> {
     const existing = this.registrations.get(id);
     if (!existing) return undefined;
-    
     const updated = { ...existing, ...updates };
     this.registrations.set(id, updated);
     return updated;
@@ -90,25 +78,21 @@ export class MemStorage implements IStorage {
   }
 
   async searchRegistrations(query: string): Promise<Registration[]> {
-    const lowercaseQuery = query.toLowerCase();
+    const q = query.toLowerCase();
     return Array.from(this.registrations.values()).filter(reg =>
-      reg.firstName.toLowerCase().includes(lowercaseQuery) ||
-      reg.lastName.toLowerCase().includes(lowercaseQuery) ||
-      reg.email.toLowerCase().includes(lowercaseQuery) ||
-      reg.school.toLowerCase().includes(lowercaseQuery)
-    ).sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+      reg.firstName.toLowerCase().includes(q) ||
+      reg.lastName.toLowerCase().includes(q) ||
+      reg.email.toLowerCase().includes(q) ||
+      reg.school.toLowerCase().includes(q)
+    );
   }
 
   async filterRegistrations(filters: { experience?: string; committee?: string }): Promise<Registration[]> {
     return Array.from(this.registrations.values()).filter(reg => {
-      if (filters.experience && reg.experience !== filters.experience) {
-        return false;
-      }
-      if (filters.committee && !reg.committees.includes(filters.committee)) {
-        return false;
-      }
+      if (filters.experience && reg.experience !== filters.experience) return false;
+      if (filters.committee && !reg.committees.includes(filters.committee)) return false;
       return true;
-    }).sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+    });
   }
 }
 
