@@ -1,7 +1,10 @@
 [build]
   base = "client"
   publish = "dist"
-  command = "npm install -g npm@9.8.1 && npm install && npm run build"
+  command = "npm run build"
 
 [build.environment]
   NODE_VERSION = "20.19.3"
+
+[[plugins]]
+  package = "./netlify/plugins/npm-setup"
