@@ -4,7 +4,7 @@
   command = "npm run build"
 
 [build.environment]
-  NODE_VERSION = "20.19.3"
+  NODE_VERSION = "20.11.1"
 
 [[plugins]]
   package = "./netlify/plugins/npm-setup"
