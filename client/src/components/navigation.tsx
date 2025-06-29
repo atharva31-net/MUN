@@ -1,3 +1,4 @@
+import React from "react";
 import { Button } from "./ui/button"
 import { UserPlus, Settings } from "lucide-react";
 import schoolLogo from "../assets/logox.jpeg"; // ✅ Fixed
