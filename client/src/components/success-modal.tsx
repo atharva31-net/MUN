@@ -1,5 +1,5 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../components/ui/dialog";
+import { Button } from "../components/ui/button";  // or default import if that's how it's exported
 import { CheckCircle, Info } from "lucide-react";
 
 interface SuccessModalProps {
@@ -48,3 +48,4 @@ export default function SuccessModal({ open, onClose }: SuccessModalProps) {
     </Dialog>
   );
 }
+

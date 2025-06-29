@@ -1,17 +1,20 @@
-// client/vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "path";
 
 export default defineConfig({
   plugins: [react()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"), // ✅ alias @ to /client/src
-    },
-  },
   build: {
     outDir: "dist",
+    rollupOptions: {
+      onwarn(warning, warn) {
+        if (
+          warning.code === "MODULE_LEVEL_DIRECTIVE" &&
+          /use client/.test(warning.message)
+        ) {
+          return;
+        }
+        warn(warning);
+      },
+    },
   },
 });
-

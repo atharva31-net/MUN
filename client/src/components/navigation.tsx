@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button"
 import { UserPlus, Settings } from "lucide-react";
 import schoolLogo from "../assets/logox.jpeg"; // ✅ Fixed
 
