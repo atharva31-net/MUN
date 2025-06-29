@@ -33,7 +33,7 @@ import {
   Trash2,
 } from "lucide-react";
 
-import { type Registration } from "../../shared/schema";
+import { type Registration } from "../..shared/schema";
 import { apiRequest, queryClient } from "../lib/queryClient";
 import { useToast } from "../hooks/use-toast";
 export default function AdminPage() {
@@ -390,3 +390,5 @@ export default function AdminPage() {
     </div>
   );
 }
+
+

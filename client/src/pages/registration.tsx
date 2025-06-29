@@ -26,7 +26,7 @@ import {
 
 import { ClipboardList, User, GraduationCap, Info, Send, X } from "lucide-react";
 
-import { insertRegistrationSchema, type InsertRegistration } from "../../../shared/schema";
+import { insertRegistrationSchema, type InsertRegistration } from "../shared/schema";
 import { apiRequest } from "../lib/queryClient";
 import { useToast } from "../hooks/use-toast";
 import SuccessModal from "../components/success-modal";
@@ -351,3 +351,5 @@ export default function RegistrationPage() {
     </div>
   );
 }
+
+
